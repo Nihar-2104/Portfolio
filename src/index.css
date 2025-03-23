@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* Smooth transitions for theme changes */
+.MuiPaper-root,
+.MuiCard-root,
+.MuiButton-root,
+.MuiIconButton-root,
+.MuiChip-root,
+.MuiTypography-root,
+.MuiListItem-root,
+.MuiDrawer-paper,
+.glass-effect {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Enhanced focus styles */
+*:focus-visible {
+  outline: 2px solid var(--primary-color, #64ffda);
+  outline-offset: 2px;
+  transition: outline-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Selection styles */
+::selection {
+  background-color: rgba(100, 255, 218, 0.2);
+  color: inherit;
+}
+
+/* Gradient text support */
+.gradient-text {
+  background: linear-gradient(45deg, var(--primary-color, #64ffda) 30%, var(--secondary-color, #0ea5e9) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glass Effect */
+.glass-effect {
+  background: rgba(17, 34, 64, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+[data-theme='light'] .glass-effect {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(100, 255, 218, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(100, 255, 218, 0.2);
+  }
+}
+
+/* Utility classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.glow {
+  animation: glow 2s infinite;
+}
+
+/* Responsive container padding */
+@media (max-width: 600px) {
+  .MuiContainer-root {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-default, #0a192f);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color, #64ffda);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light, #95ffe2);
+}
+
+/* Section Styles */
+.section-padding {
+  padding-top: calc(80px + 2rem);
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 60px 0;
+  }
+}
+
+/* Theme-specific CSS variables */
+:root[data-theme='light'] {
+  --background-default: #f8fafc;
+  --background-paper: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --primary-color: #64ffda;
+  --primary-light: #95ffe2;
+  --primary-dark: #14b8a6;
+  --divider-color: rgba(0, 0, 0, 0.12);
+}
+
+:root[data-theme='dark'] {
+  --background-default: #0a192f;
+  --background-paper: #112240;
+  --text-primary: #ccd6f6;
+  --text-secondary: #8892b0;
+  --primary-color: #64ffda;
+  --primary-light: #95ffe2;
+  --primary-dark: #14b8a6;
+  --divider-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Sticky header styles */
+.MuiAppBar-root {
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  z-index: 1100 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.MuiAppBar-root::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(100, 255, 218, 0.1),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+[data-theme='light'] .MuiAppBar-root {
+  background: linear-gradient(90deg, rgba(248, 250, 252, 0.85), rgba(255, 255, 255, 0.85)) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme='dark'] .MuiAppBar-root {
+  background: linear-gradient(90deg, rgba(10, 25, 47, 0.85), rgba(17, 34, 64, 0.85)) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Gradient button effects */
+.MuiButton-root,
+.MuiIconButton-root {
+  position: relative;
+  overflow: hidden;
+}
+
+.MuiButton-root::before,
+.MuiIconButton-root::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(100, 255, 218, 0.2),
+    rgba(14, 165, 233, 0.2)
+  );
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.MuiButton-root:hover::before,
+.MuiIconButton-root:hover::before {
+  opacity: 1;
+}
+
+/* Active nav item gradient */
+.MuiButton-root.active::after {
+  background: linear-gradient(90deg, #64ffda, #0ea5e9) !important;
+}
+
+/* Theme transition overlay with gradient */
+.theme-transition-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(100, 255, 218, 0.1),
+    rgba(14, 165, 233, 0.1)
+  ) !important;
+}
+
+/* Active nav item indicator */
+.MuiButton-root::after {
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Theme transition overlay */
+.theme-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-transition-active .theme-transition-overlay {
+  opacity: 1;
+}
